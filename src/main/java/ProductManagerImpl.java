@@ -13,6 +13,7 @@ public class ProductManagerImpl implements ProductManager {
     public ProductManagerImpl() {
         productList = new ArrayList<>();
         orderQueue = new LinkedList<>();
+        users = new HashMap<>();
     }
 
     @Override
@@ -23,18 +24,25 @@ public class ProductManagerImpl implements ProductManager {
 
     @Override
     public List<Product> getProductsByPrice() {
+        productList.sort(Comparator.comparingDouble(Product::getPrice).reversed());
         return productList;
+    }
+
+    @Override
+    public List<Product> getProductsBySales(){
+        List<Product> sortedList = new ArrayList<>(productList); // Clonar la lista para no modificar la original
+        sortedList.sort((p1, p2) -> Integer.compare(p2.sales(), p1.sales()));
+        return sortedList;
     }
 
     @Override
     public void addOrder(Order order) {
         orderQueue.add(order);
-
     }
 
     @Override
     public int numOrders() {
-        return 0;
+        return orderQueue.size();
     }
 
     @Override

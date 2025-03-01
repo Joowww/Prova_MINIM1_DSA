@@ -71,4 +71,16 @@ public class ProductManagerTest {
         List<Order> l = u.orders();
         Assert.assertEquals(1, l.size());
     }
+
+
+    @Test
+    public void testProductBySales() {
+        testDeliverOrder();
+
+        List<Product> products = pm.getProductsBySales();
+
+        Assert.assertTrue(products.get(0).sales() >= products.get(1).sales());
+        Assert.assertTrue(products.get(1).sales() >= products.get(2).sales());
+        Assert.assertTrue(products.get(2).sales() >= products.get(3).sales());
+    }
 }
