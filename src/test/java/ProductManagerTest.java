@@ -30,8 +30,8 @@ public class ProductManagerTest {
         List<Product> products = pm.getProductsByPrice();
         Assert.assertEquals(3.5, products.get(0).getPrice(),0);
         Assert.assertEquals(3, products.get(1).getPrice(), 0);
-        Assert.assertEquals(2.5, products.get(1).getPrice(), 0);
-        Assert.assertEquals(2, products.get(1).getPrice(), 0);
+        Assert.assertEquals(2.5, products.get(2).getPrice(), 0);
+        Assert.assertEquals(2, products.get(3).getPrice(), 0);
     }
 
     @Test
@@ -41,6 +41,7 @@ public class ProductManagerTest {
         o.addLP(2, "C1"); //, "coca-cola");
         o.addLP(1, "bocata de pernil");
         o.addLP(1, "donut");
+       // o.addLP(1, "C1"); //, "coca-cola");
         pm.addOrder(o);
 
         Assert.assertEquals(1, pm.numOrders());
@@ -61,7 +62,7 @@ public class ProductManagerTest {
         testDeliverOrder();
 
         Product p = pm.getProduct("C1");
-        Assert.assertEquals(2, p.sales());
+        Assert.assertEquals(2, p.getSales());
     }
 
     @Test
@@ -79,8 +80,8 @@ public class ProductManagerTest {
 
         List<Product> products = pm.getProductsBySales();
 
-        Assert.assertTrue(products.get(0).sales() >= products.get(1).sales());
-        Assert.assertTrue(products.get(1).sales() >= products.get(2).sales());
-        Assert.assertTrue(products.get(2).sales() >= products.get(3).sales());
+        Assert.assertTrue(products.get(0).getSales() >= products.get(1).getSales());
+        Assert.assertTrue(products.get(1).getSales() >= products.get(2).getSales());
+        Assert.assertTrue(products.get(2).getSales() >= products.get(3).getSales());
     }
 }
