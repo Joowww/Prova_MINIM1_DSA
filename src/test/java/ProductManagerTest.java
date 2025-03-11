@@ -54,7 +54,7 @@ public class ProductManagerTest {
         Order o = pm.deliverOrder();
         Assert.assertEquals(0, pm.numOrders());
 
-        Assert.assertEquals("381112838", o.getUser());
+        Assert.assertEquals("381112838", o.getUser().getDni());
     }
 
     @Test

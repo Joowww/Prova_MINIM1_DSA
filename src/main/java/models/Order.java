@@ -26,8 +26,12 @@ public class Order {
     }
 
     public User getUser() {
+        if (user == null) {
+            user = new User(userDni); // Crear usuario si es necesario
+        }
         return user;
     }
+
 
 
     public List<LP> getProducts() {
